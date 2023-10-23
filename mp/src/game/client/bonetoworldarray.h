@@ -30,7 +30,7 @@ public:
 	{
 		const int SIZE_ARRAY = AlignValue( sizeof(matrix3x4_t) * MAXSTUDIOBONES, ALIGNMENT );
 		m_pBase = (matrix3x4_t *)_aligned_malloc( SIZE_ARRAY * NUM_ARRAYS, ALIGNMENT );
-		for ( int i = 0; i < NUM_ARRAYS; i++ )
+		for ( int i = 0; i < NUM_ARRAYS; ++i )
 		{
 			matrix3x4_t *pArray = (matrix3x4_t *)((byte *)m_pBase + SIZE_ARRAY * i);
 			Assert( (size_t)pArray % ALIGNMENT == 0 );

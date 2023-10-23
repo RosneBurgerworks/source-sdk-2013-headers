@@ -189,7 +189,7 @@ CUtlTSHash<T,BUCKET_COUNT,KEYTYPE,HashFuncs,nAlignment>::CUtlTSHash( int nAlloca
 	m_ContentionCheck = 0;
 #endif
 	m_bNeedsCommit = false;
-	for ( int i = 0; i < BUCKET_COUNT; i++ )
+	for ( int i = 0; i < BUCKET_COUNT; ++i )
 	{
 		HashBucket_t &bucket = m_aBuckets[ i ];
 		bucket.m_pFirst = NULL;
@@ -240,7 +240,7 @@ template<class T, int BUCKET_COUNT, class KEYTYPE, class HashFuncs, int nAlignme
 int CUtlTSHash<T,BUCKET_COUNT,KEYTYPE,HashFuncs,nAlignment>::GetElements( int nFirstElement, int nCount, UtlTSHashHandle_t *pHandles ) const
 {
 	int nIndex = 0;
-	for ( int i = 0; i < BUCKET_COUNT; i++ )
+	for ( int i = 0; i < BUCKET_COUNT; ++i )
 	{
 		const HashBucket_t &bucket = m_aBuckets[ i ];
 		bucket.m_AddLock.LockForRead( );
@@ -422,7 +422,7 @@ inline void CUtlTSHash<T,BUCKET_COUNT,KEYTYPE,HashFuncs,nAlignment>::Commit( )
 	m_ContentionCheck++;
 #endif
 
-	for ( int i = 0; i < BUCKET_COUNT; i++ )
+	for ( int i = 0; i < BUCKET_COUNT; ++i )
 	{
 		HashBucket_t &bucket = m_aBuckets[ i ];
 		bucket.m_AddLock.LockForRead( );
@@ -510,7 +510,7 @@ inline void CUtlTSHash<T,BUCKET_COUNT,KEYTYPE,HashFuncs,nAlignment>::RemoveAll( 
 	m_ContentionCheck++;
 #endif
 
-	for ( int i = 0; i < BUCKET_COUNT; i++ )
+	for ( int i = 0; i < BUCKET_COUNT; ++i )
 	{
 		HashBucket_t &bucket = m_aBuckets[ i ];
 

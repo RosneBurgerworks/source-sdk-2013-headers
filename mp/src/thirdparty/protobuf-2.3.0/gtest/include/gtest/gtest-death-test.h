@@ -72,7 +72,7 @@ GTEST_DECLARE_string_(death_test_style);
 // Examples:
 //
 //   ASSERT_DEATH(server.SendMessage(56, "Hello"), "Invalid port number");
-//   for (int i = 0; i < 5; i++) {
+//   for (int i = 0; i < 5; ++i) {
 //     EXPECT_DEATH(server.ProcessRequest(i),
 //                  "Invalid request .* in ProcessRequest()")
 //         << "Failed to die on request " << i);

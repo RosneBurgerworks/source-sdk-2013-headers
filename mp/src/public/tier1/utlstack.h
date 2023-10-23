@@ -126,7 +126,7 @@ void CUtlStack<T,M>::CopyFrom( const CUtlStack<T, M> &from )
 {
 	Purge();
 	EnsureCapacity( from.Count() );
-	for ( int i = 0; i < from.Count(); i++ )
+	for ( int i = 0; i < from.Count(); ++i )
 	{
 		Push( from[i] );
 	}

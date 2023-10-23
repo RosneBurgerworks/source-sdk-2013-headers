@@ -57,7 +57,7 @@ inline CHelperInfo::CHelperInfo(void)
 inline CHelperInfo::~CHelperInfo(void)
 {
 	int nCount = m_Parameters.Count();
-	for (int i = 0; i < nCount; i++)
+	for (int i = 0; i < nCount; ++i)
 	{
 		char *pszParam = m_Parameters.Element(i);
 		Assert(pszParam != NULL);

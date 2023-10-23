@@ -991,7 +991,7 @@ inline int CVarBitVecBase<BITCOUNTTYPE>::FindNextSetBit( int startBit ) const
 					return FirstBitInWord(elem, wordIndex << 5);
 
 				// iterate the words
-				for ( int i = wordIndex+1; i < lastWord; i++ )
+				for ( int i = wordIndex+1; i < lastWord; ++i )
 				{
 					elem = Base()[i];
 					if ( elem )
@@ -1049,7 +1049,7 @@ inline int CFixedBitVecBase<NUM_BITS>::FindNextSetBit( int startBit ) const
 					return FirstBitInWord(elem, wordIndex << 5);
 
 				// iterate the words
-				for ( int i = wordIndex+1; i < NUM_INTS-1; i++ )
+				for ( int i = wordIndex+1; i < NUM_INTS-1; ++i )
 				{
 					elem = Base()[i];
 					if ( elem )

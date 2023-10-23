@@ -127,7 +127,7 @@ public:
 
 		uint32 *d = new uint32[m * 4];
 
-		for (uint32 i = 1; i <= m; i++)
+		for (uint32 i = 1; i <= m; ++i)
 		{
 #ifdef COMPILER_MSVC64
 			__cpuid((int *) (d + (i-1) * 4), i);
@@ -281,7 +281,7 @@ private:
 		for (int ci1 = 0; ci1 < 256; ci1++)
 			c[ci1] = false;
 
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < count; ++i)
 		{
 #ifdef COMPILER_MSVC64
 			__cpuid((int *) d, 2);
@@ -345,7 +345,7 @@ private:
 		{
 			uint32 *d = new uint32[(m - 0x80000000) * 4];
 
-			for (uint32 i = 0x80000001; i <= m; i++)
+			for (uint32 i = 0x80000001; i <= m; ++i)
 			{
 				uint32 *t = d + (i - 0x80000001) * 4;
 

@@ -399,7 +399,7 @@ public:
 	template<class T> T AverageStat( T StatsBufferRecord_t::*field ) const
 	{
 		T sum = 0;
-		for( int i = 0; i < STATS_WINDOW_SIZE; i++ )
+		for( int i = 0; i < STATS_WINDOW_SIZE; ++i )
 			sum += m_StatsBuffer[i].*field;
 		return sum / STATS_WINDOW_SIZE;
 	}
@@ -407,7 +407,7 @@ public:
 	template<class T> T MaxStat( T StatsBufferRecord_t::*field ) const
 	{
 		T maxsofar = -16000000;
-		for( int i = 0; i < STATS_WINDOW_SIZE; i++ )
+		for( int i = 0; i < STATS_WINDOW_SIZE; ++i )
 			maxsofar = MAX( maxsofar, m_StatsBuffer[i].*field );
 		return maxsofar;
 	}
@@ -415,7 +415,7 @@ public:
 	template<class T> T MinStat( T StatsBufferRecord_t::*field ) const
 	{
 		T minsofar = 16000000;
-		for( int i = 0; i < STATS_WINDOW_SIZE; i++ )
+		for( int i = 0; i < STATS_WINDOW_SIZE; ++i )
 			minsofar = MIN( minsofar, m_StatsBuffer[i].*field );
 		return minsofar;
 	}

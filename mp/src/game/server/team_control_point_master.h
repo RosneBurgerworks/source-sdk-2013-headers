@@ -73,7 +73,7 @@ public:
 		Assert( point >= 0 );
 		Assert( point < MAX_CONTROL_POINTS );
 
-		for ( unsigned int i = 0; i < m_ControlPoints.Count(); i++ )
+		for ( unsigned int i = 0; i < m_ControlPoints.Count(); ++i )
 		{
 			CTeamControlPoint *pPoint = m_ControlPoints[i];
 			if ( pPoint && pPoint->GetPointIndex() == point )

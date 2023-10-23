@@ -99,7 +99,7 @@ public:
     {
         pme = PME::Instance();
 
-        for(int i = 0; i< k8NUM_COUNTERS; i++)
+        for(int i = 0; i< k8NUM_COUNTERS; ++i)
         {
             eventSelect[i].flat = 0;
 

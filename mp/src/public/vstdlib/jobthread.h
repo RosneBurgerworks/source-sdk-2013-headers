@@ -108,7 +108,7 @@ struct ThreadPoolStartParams_t
 		{
 			// user supplied an optional 1:1 affinity mapping to override normal distribute behavior
 			nThreads = MIN( TP_MAX_POOL_THREADS, nThreads );
-			for ( unsigned int i = 0; i < nThreads; i++ )
+			for ( unsigned int i = 0; i < nThreads; ++i )
 			{
 				iAffinityTable[i] = pAffinities[i];
 			}
@@ -606,7 +606,7 @@ public:
 
 	~CJobSet()
 	{
-		for ( int i = 0; i < m_jobs.Count(); i++ )
+		for ( int i = 0; i < m_jobs.Count(); ++i )
 		{
 			m_jobs[i]->Release();
 		}
@@ -624,7 +624,7 @@ public:
 
 	void Execute( bool bRelease = true )
 	{
-		for ( int i = 0; i < m_jobs.Count(); i++ )
+		for ( int i = 0; i < m_jobs.Count(); ++i )
 		{
 			m_jobs[i]->Execute();
 			if ( bRelease )
@@ -641,7 +641,7 @@ public:
 
 	void Abort( bool bRelease = true )
 	{
-		for ( int i = 0; i < m_jobs.Count(); i++ )
+		for ( int i = 0; i < m_jobs.Count(); ++i )
 		{
 			m_jobs[i]->Abort();
 			if ( bRelease )
@@ -658,7 +658,7 @@ public:
 
 	void WaitForFinish( bool bRelease = true )
 	{
-		for ( int i = 0; i < m_jobs.Count(); i++ )
+		for ( int i = 0; i < m_jobs.Count(); ++i )
 		{
 			m_jobs[i]->WaitForFinish();
 			if ( bRelease )
@@ -679,7 +679,7 @@ public:
 
 		if ( bRelease )
 		{
-			for ( int i = 0; i < m_jobs.Count(); i++ )
+			for ( int i = 0; i < m_jobs.Count(); ++i )
 			{
 				m_jobs[i]->Release();
 			}
@@ -903,7 +903,7 @@ public:
 
 			DoExecute();
 
-			for ( i = 0; i < nJobs; i++ )
+			for ( i = 0; i < nJobs; ++i )
 			{
 				jobs[i]->Abort(); // will either abort ones that never got a thread, or noop on ones that did
 				jobs[i]->Release();

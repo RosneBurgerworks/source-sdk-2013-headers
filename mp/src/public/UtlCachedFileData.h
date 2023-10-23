@@ -961,7 +961,7 @@ void	CUtlCachedFileData<T>::CheckDiskInfo( bool forcerebuild, long cacheFileTime
 			bCheck = (pathTime > cacheFileTime) ? true : false;
 		}
 
-		for ( i = listStart; i < listEnd; i++ )
+		for ( i = listStart; i < listEnd; ++i )
 		{
 			ElementType_t& element = m_Elements[ list[i].index ];
 

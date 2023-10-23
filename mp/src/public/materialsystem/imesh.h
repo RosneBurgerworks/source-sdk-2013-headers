@@ -968,7 +968,7 @@ inline void CVertexBuilder::Reset()
 
 	m_pCurrPosition = m_pPosition;
 	m_pCurrNormal = m_pNormal;
-	for ( int i = 0; i < NELEMS( m_pCurrTexCoord ); i++ )
+	for ( int i = 0; i < NELEMS( m_pCurrTexCoord ); ++i )
 	{
 		m_pCurrTexCoord[i] = m_pTexCoord[i];
 	}
@@ -2917,7 +2917,7 @@ inline void CIndexBuilder::FastPolygonList( int startVert, int *pVertexCount, in
 		polygonCount *= m_nIndexSize;
 	}
 
-	for ( int i = 0; i < polygonCount; i++ )
+	for ( int i = 0; i < polygonCount; ++i )
 	{
 		int vertexCount = pVertexCount[i];
 		int triangleCount = vertexCount-2;

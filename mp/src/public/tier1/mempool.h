@@ -402,7 +402,7 @@ inline void *CAlignedMemPool<ITEM_SIZE, ALIGNMENT, CHUNK_SIZE, CAllocator, COMPA
 		m_Chunks.AddToTail( pNew );
 		m_nFree = CHUNK_SIZE / BLOCK_SIZE;
 		m_pFirstFree = pNew;
-		for ( int i = 0; i < m_nFree - 1; i++ )
+		for ( int i = 0; i < m_nFree - 1; ++i )
 		{
 			pNew->pNext = pNew + 1;
 			pNew++;
@@ -481,7 +481,7 @@ inline void CAlignedMemPool<ITEM_SIZE, ALIGNMENT, CHUNK_SIZE, CAllocator, COMPAC
 			p = p->pNext;
 		}
 
-		for ( int i = 0; i < m_Chunks.Count(); i++ )
+		for ( int i = 0; i < m_Chunks.Count(); ++i )
 		{
 			if ( i + 1 < m_Chunks.Count() )
 			{
@@ -496,7 +496,7 @@ inline void CAlignedMemPool<ITEM_SIZE, ALIGNMENT, CHUNK_SIZE, CAllocator, COMPAC
 
 	int i;
 
-	for ( i = 0; i < m_Chunks.Count(); i++ )
+	for ( i = 0; i < m_Chunks.Count(); ++i )
 	{
 		int nBlocksPerChunk = CHUNK_SIZE / BLOCK_SIZE;
 		FreeBlock_t *pChunkLimit = ((FreeBlock_t *)m_Chunks[i]) + nBlocksPerChunk;

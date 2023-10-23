@@ -308,7 +308,7 @@ int CUtlArray<T, MAX_SIZE>::Find( const T& src ) const
 template< typename T, size_t MAX_SIZE >
 void CUtlArray<T, MAX_SIZE>::FillWithValue( const T& src )
 {
-	for ( int i = 0; i < Count(); i++ )
+	for ( int i = 0; i < Count(); ++i )
 	{
 		Element(i) = src;
 	}
@@ -323,7 +323,7 @@ bool CUtlArray<T, MAX_SIZE>::HasElement( const T& src ) const
 template< typename T, size_t MAX_SIZE >
 inline void CUtlArray<T, MAX_SIZE>::DeleteElements()
 {
-	for( int i=0; i < MAX_SIZE; i++ )
+	for( int i=0; i < MAX_SIZE; ++i )
 	{
 		delete Element(i);
 	}

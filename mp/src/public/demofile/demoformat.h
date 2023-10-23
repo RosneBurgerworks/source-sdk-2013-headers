@@ -229,7 +229,7 @@ struct CSmoothingContext
 		smooth.RemoveAll();
 		int c = src.smooth.Count();
 		int i;
-		for ( i = 0; i < c; i++ )
+		for ( i = 0; i < c; ++i )
 		{
 			demosmoothing_t newitem;
 			newitem = src.smooth[ i ];

@@ -134,13 +134,13 @@ public:
 
 			int nNumEntriesPerTeam = TEAM_TRAIN_MAX_HILLS * TEAM_TRAIN_FLOATS_PER_HILL; 
 			int iStartingIndex = team * nNumEntriesPerTeam;
-			for ( int i = 0 ; i < nNumEntriesPerTeam ; i++ )
+			for ( int i = 0 ; i < nNumEntriesPerTeam ; ++i )
 			{
 				m_flNodeHillData.Set( iStartingIndex + i, 0 );
 			}
 
 			iStartingIndex = team * TEAM_TRAIN_MAX_HILLS;
-			for ( int i = 0; i < TEAM_TRAIN_MAX_HILLS; i++ )
+			for ( int i = 0; i < TEAM_TRAIN_MAX_HILLS; ++i )
 			{
 				m_bHillIsDownhill.Set( iStartingIndex + i, 0 );
 			}

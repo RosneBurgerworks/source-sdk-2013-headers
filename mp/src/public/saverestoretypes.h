@@ -192,7 +192,7 @@ public:
 		pTable = pNewTable;
 		tableCount = size;
 
-		for ( int i = 0; i < NumEntities(); i++ )
+		for ( int i = 0; i < NumEntities(); ++i )
 		{
 			GetEntityInfo( i )->Clear();
 		}
@@ -221,7 +221,7 @@ public:
 		entitytable_t *pTable;
 		int nEntities = NumEntities();
 
-		for ( i = 0; i < nEntities; i++ )
+		for ( i = 0; i < nEntities; ++i )
 		{
 			pTable = GetEntityInfo( i );
 			m_EntityToIndex.Insert(  CHashElement( pTable->hEnt.Get(), i ) );
@@ -253,7 +253,7 @@ public:
 				entitytable_t *pTable;
 
 				int nEntities = NumEntities();
-				for ( i = 0; i < nEntities; i++ )
+				for ( i = 0; i < nEntities; ++i )
 				{
 					pTable = GetEntityInfo( i );
 					if ( pTable->hEnt == pEntity )
@@ -474,7 +474,7 @@ inline unsigned short CSaveRestoreSegment::FindCreateSymbol( const char *pszToke
 	}
 #endif
 
-	for ( int i=0; i<tokenCount; i++ )
+	for ( int i=0; i<tokenCount; ++i )
 	{
 #if _DEBUG
 		static bool beentheredonethat = false;

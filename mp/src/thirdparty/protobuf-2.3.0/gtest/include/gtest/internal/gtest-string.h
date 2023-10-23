@@ -316,7 +316,7 @@ inline ::std::ostream& operator<<(::std::ostream& os, const String& str) {
     os << "(null)";
   } else {
     const char* const c_str = str.c_str();
-    for (size_t i = 0; i != str.length(); i++) {
+    for (size_t i = 0; i != str.length(); ++i) {
       if (c_str[i] == '\0') {
         os << "\\0";
       } else {

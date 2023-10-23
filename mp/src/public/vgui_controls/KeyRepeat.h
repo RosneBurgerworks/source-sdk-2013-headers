@@ -31,7 +31,7 @@ public:
 	CKeyRepeatHandler()
 	{
 		Reset();
-		for ( int i = 0; i < FM_NUM_KEYREPEAT_ALIASES; i++ )
+		for ( int i = 0; i < FM_NUM_KEYREPEAT_ALIASES; ++i )
 		{
 			m_flRepeatTimes[i] = 0.16;
 		}

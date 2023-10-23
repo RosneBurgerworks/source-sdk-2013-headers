@@ -79,7 +79,7 @@ inline DialogManager<TDialog, I>::DialogManager(CreateNewDialogFunc_t createDial
 template <class TDialog, class I>
 inline TDialog *DialogManager<TDialog, I>::FindDialog(I dialogID, bool bCreate)
 {
-	for (int i = 0; i < m_Dialogs.MaxElementIndex(); i++)
+	for (int i = 0; i < m_Dialogs.MaxElementIndex(); ++i)
 	{
 		if (ValidateIndex(i) && m_Dialogs[i].id == dialogID)
 		{
@@ -126,7 +126,7 @@ template <class TDialog, class I>
 inline int DialogManager<TDialog, I>::Count()
 {
 	// validate all the indexes first
-	for (int i = 0; i < m_Dialogs.MaxElementIndex(); i++)
+	for (int i = 0; i < m_Dialogs.MaxElementIndex(); ++i)
 	{
 		if (ValidateIndex(i))
 		{
@@ -141,7 +141,7 @@ inline int DialogManager<TDialog, I>::Count()
 template <class TDialog, class I>
 inline void DialogManager<TDialog, I>::CloseAll()
 {
-	for (int i = 0; i < m_Dialogs.MaxElementIndex(); i++)
+	for (int i = 0; i < m_Dialogs.MaxElementIndex(); ++i)
 	{
 		if (ValidateIndex(i))
 		{
@@ -155,7 +155,7 @@ template <class TDialog, class I>
 inline void DialogManager<TDialog, I>::CloseAndDeleteAll()
 {
 	CloseAll();
-	for (int i = 0; i < m_Dialogs.MaxElementIndex(); i++)
+	for (int i = 0; i < m_Dialogs.MaxElementIndex(); ++i)
 	{
 		if (ValidateIndex(i))
 		{

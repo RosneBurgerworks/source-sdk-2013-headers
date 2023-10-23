@@ -367,7 +367,7 @@ public:
 	{
 		void **ppClassPtr = (void **)fieldInfo.pField;
 		int nObjects = fieldInfo.pTypeDesc->fieldSize;
-		for ( int i = 0; i < nObjects; i++ )
+		for ( int i = 0; i < nObjects; ++i )
 		{
 			if ( ppClassPtr[i] != NULL )
 				return false;

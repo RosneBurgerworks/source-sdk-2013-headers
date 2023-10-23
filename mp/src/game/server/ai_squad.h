@@ -262,7 +262,7 @@ inline CAI_BaseNPC *CAI_Squad::GetAnyMember()
 
 inline int CAI_Squad::GetSquadIndex( CAI_BaseNPC *pAI )
 {
-	for ( int i = 0; i < m_SquadMembers.Count(); i++ )
+	for ( int i = 0; i < m_SquadMembers.Count(); ++i )
 	{
 		if ( m_SquadMembers[i] == pAI )
 			return i;

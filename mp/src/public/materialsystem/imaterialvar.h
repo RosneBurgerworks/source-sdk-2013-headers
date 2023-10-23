@@ -170,7 +170,7 @@ public:
 	FORCEINLINE void GetVecValueFast( float *val, int numcomps ) const 
 	{
 		Assert( ( numcomps >0 ) && ( numcomps <= 4 ) );
-		for( int i=0 ; i < numcomps; i++ )
+		for( int i=0 ; i < numcomps; ++i )
 		{
 			val[i] = m_VecVal[ i ];
 		}

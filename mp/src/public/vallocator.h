@@ -69,14 +69,14 @@ inline void operator delete(void *ptrToDelete, void *ptr, DummyAllocatorHelper *
 template<class T>
 inline void VAllocator_CallConstructors(T *pObjects, int count=1)
 {
-	for(int i=0; i < count; i++)
+	for(int i=0; i < count; ++i)
 		new(&pObjects[i], (DummyAllocatorHelper*)0) T;
 }
 
 template<class T>
 inline void VAllocator_CallDestructors(T *pObjects, int count)
 {
-	for(int i=0; i < count; i++)
+	for(int i=0; i < count; ++i)
 		pObjects[i].~T();
 }
 

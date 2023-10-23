@@ -139,7 +139,7 @@ private:
 			iszOverlay = NULL_STRING;
 			iPlayersRequired = 0;
 			iTimedPoints = 0;
-			for ( int i = 0; i < MAX_PREVIOUS_POINTS; i++ )
+			for ( int i = 0; i < MAX_PREVIOUS_POINTS; ++i )
 			{
 				iszPreviousPoint[i] = NULL_STRING;
 			}

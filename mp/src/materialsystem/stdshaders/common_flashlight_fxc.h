@@ -310,7 +310,7 @@ TODO: Fix this contact hardening stuff
 		RMatBottom.xy *= flContactHardeningScale;
 */
 
-		for( int i=0; i<8; i++ )
+		for( int i=0; i<8; ++i )
 		{
 			rotOffset.x = dot (RMatTop.xy,    vPoissonOffset[i].xy) + RMatTop.z;
 			rotOffset.y = dot (RMatBottom.xy, vPoissonOffset[i].xy) + RMatBottom.z;
@@ -322,7 +322,7 @@ TODO: Fix this contact hardening stuff
 	}
 	else	// ATI vanilla hardware shadow mapping
 	{
-		for( int i=0; i<2; i++ )
+		for( int i=0; i<2; ++i )
 		{
 			rotOffset.x = dot (RMatTop.xy,    vPoissonOffset[4*i+0].xy) + RMatTop.z;
 			rotOffset.y = dot (RMatBottom.xy, vPoissonOffset[4*i+0].xy) + RMatBottom.z;

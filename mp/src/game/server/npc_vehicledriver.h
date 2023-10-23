@@ -71,7 +71,7 @@ public:
 		flSplineLength = 0;
 		Vector vecPrev = splinePoints[1];
 		const int iDivs = 10;
-		for ( int i = 1; i <= iDivs; i++ )
+		for ( int i = 1; i <= iDivs; ++i )
 		{
 			Vector vecCurr;
 			float flT = (float)i / (float)iDivs;

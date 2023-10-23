@@ -867,7 +867,7 @@ float3 DoLighting( const float3 worldPos, const float3 worldNormal,
 
 	if( bDynamicLight )			// Dynamic light
 	{
-		for (int i = 0; i < g_nLightCount; i++)
+		for (int i = 0; i < g_nLightCount; ++i)
 		{
 			linearColor += DoLightInternal( worldPos, worldNormal, i, bHalfLambert );
 		}		

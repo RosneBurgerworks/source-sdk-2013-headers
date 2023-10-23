@@ -95,12 +95,12 @@ struct vehiclesounds_t
 		pGears.Purge();
 		crashSounds.Purge();
 		
-		for ( int i = 0; i < VS_NUM_SOUNDS; i++ )
+		for ( int i = 0; i < VS_NUM_SOUNDS; ++i )
 		{
 			iszSound[i] = NULL_STRING;
 		}
 
-		for ( int i = 0; i < SS_NUM_STATES; i++ )
+		for ( int i = 0; i < SS_NUM_STATES; ++i )
 		{
 			iszStateSounds[i] = NULL_STRING;
 			minStateTime[i] = 0.0f;

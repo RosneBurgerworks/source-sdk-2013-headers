@@ -211,7 +211,7 @@ struct CInterpolatedVarEntryBase
 		{
 			count = src.count;
 			value = new Type[count];
-			for ( int i = 0; i < count; i++ )
+			for ( int i = 0; i < count; ++i )
 			{
 				value[i] = src.value[i];
 			}
@@ -350,7 +350,7 @@ public:
 		{
 			int newMax = m_maxElement + ((capSize+m_growSize-1)/m_growSize) * m_growSize;
 			T *pNew = new T[newMax];
-			for ( int i = 0; i < m_maxElement; i++ )
+			for ( int i = 0; i < m_maxElement; ++i )
 			{
 				// ------------
 				// If you wanted to make this a more generic container you'd probably want this code
@@ -688,7 +688,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::RestoreToLastNetworked()
 template< typename Type, bool IS_ARRAY >
 inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::ClearHistory()
 {
-	for ( int i = 0; i < m_VarHistory.Count(); i++ )
+	for ( int i = 0; i < m_VarHistory.Count(); ++i )
 	{
 		m_VarHistory[i].DeleteEntry();
 	}
@@ -723,7 +723,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::AddToHead( float changeTi
 	else
 	{
 		newslot = m_VarHistory.AddToHead();
-		for ( int i = 1; i < m_VarHistory.Count(); i++ )
+		for ( int i = 1; i < m_VarHistory.Count(); ++i )
 		{
 			if ( m_VarHistory[i].changetime <= changeTime )
 				break;
@@ -781,7 +781,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::RemoveOldEntries( float o
 template< typename Type, bool IS_ARRAY >
 inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::RemoveEntriesPreviousTo( float flTime )
 {
-	for ( int i = 0; i < m_VarHistory.Count(); i++ )
+	for ( int i = 0; i < m_VarHistory.Count(); ++i )
 	{
 		if ( m_VarHistory[i].changetime < flTime )
 		{
@@ -813,7 +813,7 @@ inline bool CInterpolatedVarArrayBase<Type, IS_ARRAY>::GetInterpolationInfo(
 	pInfo->frac = 0;
 	pInfo->oldest = pInfo->older = pInfo->newer = varHistory.InvalidIndex();
 	
-	for ( int i = 0; i < varHistory.Count(); i++ )
+	for ( int i = 0; i < varHistory.Count(); ++i )
 	{
 		pInfo->older = i;
 		
@@ -1133,7 +1133,7 @@ void CInterpolatedVarArrayBase<Type, IS_ARRAY>::GetDerivative_SmoothVelocity( Ty
 		if ( diff > cl_extrapolate_amount.GetFloat() )
 		{
 			float scale = 1 - (diff - cl_extrapolate_amount.GetFloat()) / cl_extrapolate_amount.GetFloat();
-			for ( int i=0; i < m_nMaxCount; i++ )
+			for ( int i=0; i < m_nMaxCount; ++i )
 			{
 				pOut[i] *= scale;
 			}
@@ -1175,7 +1175,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::Copy( IInterpolatedVar *p
 	Assert( (m_fType & ~EXCLUDE_AUTO_INTERPOLATE) == (pSrc->m_fType & ~EXCLUDE_AUTO_INTERPOLATE) );
 	Assert( m_pDebugName == pSrc->GetDebugName() );
 
-	for ( int i=0; i < m_nMaxCount; i++ )
+	for ( int i=0; i < m_nMaxCount; ++i )
 	{
 		m_LastNetworkedValue[i] = pSrc->m_LastNetworkedValue[i];
 		m_bLooping[i] = pSrc->m_bLooping[i];
@@ -1186,7 +1186,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::Copy( IInterpolatedVar *p
 	// Copy the entries.
 	m_VarHistory.RemoveAll();
 
-	for ( int i = 0; i < pSrc->m_VarHistory.Count(); i++ )
+	for ( int i = 0; i < pSrc->m_VarHistory.Count(); ++i )
 	{
 		int newslot = m_VarHistory.AddToTail();
 
@@ -1261,7 +1261,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::SetHistoryValuesForItem( 
 {
 	Assert( item >= 0 && item < m_nMaxCount );
 
-	for ( int i = 0; i < m_VarHistory.Count(); i++ )
+	for ( int i = 0; i < m_VarHistory.Count(); ++i )
 	{
 		CInterpolatedVarEntry *entry = &m_VarHistory[ i ];
 		entry->GetValue()[ item ] = value;
@@ -1315,7 +1315,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Interpolate( Type *out, 
 	if ( start == end )
 	{
 		// quick exit
-		for ( int i = 0; i < m_nMaxCount; i++ )
+		for ( int i = 0; i < m_nMaxCount; ++i )
 		{
 			out[i] = end->GetValue()[i];
 			Lerp_Clamp( out[i] );
@@ -1326,7 +1326,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Interpolate( Type *out, 
 	Assert( frac >= 0.0f && frac <= 1.0f );
 
 	// Note that QAngle has a specialization that will do quaternion interpolation here...
-	for ( int i = 0; i < m_nMaxCount; i++ )
+	for ( int i = 0; i < m_nMaxCount; ++i )
 	{
 		if ( m_bLooping[ i ] )
 		{
@@ -1352,7 +1352,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Extrapolate(
 {
 	if ( fabs( pOld->changetime - pNew->changetime ) < 0.001f || flDestinationTime <= pNew->changetime )
 	{
-		for ( int i=0; i < m_nMaxCount; i++ )
+		for ( int i=0; i < m_nMaxCount; ++i )
 			pOut[i] = pNew->GetValue()[i];
 	}
 	else
@@ -1360,7 +1360,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Extrapolate(
 		float flExtrapolationAmount = MIN( flDestinationTime - pNew->changetime, flMaxExtrapolationAmount );
 
 		float divisor = 1.0f / (pNew->changetime - pOld->changetime);
-		for ( int i=0; i < m_nMaxCount; i++ )
+		for ( int i=0; i < m_nMaxCount; ++i )
 		{
 			pOut[i] = ExtrapolateInterpolatedVarType( pOld->GetValue()[i], pNew->GetValue()[i], divisor, flExtrapolationAmount );
 		}
@@ -1388,7 +1388,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::TimeFixup2_Hermite(
 		// Fixed interval into past
 		fixup.changetime = start->changetime - dt1;
 
-		for ( int i = 0; i < m_nMaxCount; i++ )
+		for ( int i = 0; i < m_nMaxCount; ++i )
 		{
 			if ( m_bLooping[i] )
 			{
@@ -1437,7 +1437,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Interpolate_Hermite(
 	fixup.Init(m_nMaxCount);
 	TimeFixup_Hermite( fixup, prev, start, end );
 
-	for( int i = 0; i < m_nMaxCount; i++ )
+	for( int i = 0; i < m_nMaxCount; ++i )
 	{
 		// Note that QAngle has a specialization that will do quaternion interpolation here...
 		if ( m_bLooping[ i ] )
@@ -1478,7 +1478,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Derivative_Hermite(
 
 	float divisor = 1.0f / (end->changetime - start->changetime);
 
-	for( int i = 0; i < m_nMaxCount; i++ )
+	for( int i = 0; i < m_nMaxCount; ++i )
 	{
 		Assert( !m_bLooping[ i ] );
 		out[i] = Derivative_Hermite( frac, prev->GetValue()[i], start->GetValue()[i], end->GetValue()[i] );
@@ -1498,7 +1498,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Derivative_Hermite_Smoot
 	CInterpolatedVarEntry fixup;
 	fixup.Init(m_nMaxCount);
 	TimeFixup_Hermite( fixup, b, c, d );
-	for ( int i=0; i < m_nMaxCount; i++ )
+	for ( int i=0; i < m_nMaxCount; ++i )
 	{
 		Type prevVel = (c->GetValue()[i] - b->GetValue()[i]) / (c->changetime - b->changetime);
 		Type curVel  = (d->GetValue()[i] - c->GetValue()[i]) / (d->changetime - c->changetime);
@@ -1515,7 +1515,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Derivative_Linear(
 {
 	if ( start == end || fabs( start->changetime - end->changetime ) < 0.0001f )
 	{
-		for( int i = 0; i < m_nMaxCount; i++ )
+		for( int i = 0; i < m_nMaxCount; ++i )
 		{
 			out[ i ] = start->GetValue()[i] * 0;
 		}
@@ -1523,7 +1523,7 @@ inline void CInterpolatedVarArrayBase<Type, IS_ARRAY>::_Derivative_Linear(
 	else 
 	{
 		float divisor = 1.0f / (end->changetime - start->changetime);
-		for( int i = 0; i < m_nMaxCount; i++ )
+		for( int i = 0; i < m_nMaxCount; ++i )
 		{
 			out[ i ] = (end->GetValue()[i] - start->GetValue()[i]) * divisor;
 		}
@@ -1536,7 +1536,7 @@ inline bool CInterpolatedVarArrayBase<Type, IS_ARRAY>::ValidOrder()
 {
 	float newestchangetime = 0.0f;
 	bool first = true;
-	for ( int i = 0; i < m_VarHistory.Count(); i++ )
+	for ( int i = 0; i < m_VarHistory.Count(); ++i )
 	{
 		CInterpolatedVarEntry *entry = &m_VarHistory[ i ];
 		if ( first )

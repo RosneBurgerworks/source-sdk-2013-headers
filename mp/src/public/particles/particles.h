@@ -1896,7 +1896,7 @@ inline void CParticleCollection::FillAttributeWithConstant( int nAttribute, floa
 	size_t stride;
 	fltx4 *pAttr = GetM128AttributePtrForWrite( nAttribute, &stride );
 	fltx4 fill=ReplicateX4( fValue );
-	for( int i = 0; i < m_nPaddedActiveParticles; i++ )
+	for( int i = 0; i < m_nPaddedActiveParticles; ++i )
 	{
 		*(pAttr) = fill;
 		pAttr += stride;

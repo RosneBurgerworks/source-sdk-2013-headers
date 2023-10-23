@@ -59,7 +59,7 @@ public:
 	int Find( CBaseEntity *pTarget )
 	{
 		int i;
-		for ( i = 0; i < Count(); i++)
+		for ( i = 0; i < Count(); ++i)
 		{
 			if (pTarget == (*this)[i].m_hTarget)
 				return i;

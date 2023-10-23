@@ -62,7 +62,7 @@ inline NMatrix<N,N> OuterProduct( NVectorN const &a, NVectorN const &b )
 {
 	NMatrix<N,N> ret;
 
-	for( int i=0; i < N; i++ )
+	for( int i=0; i < N; ++i )
 		for( int j=0; j < N; j++ )
 			ret.m[i][j] = a.v[i] * b.v[j];
 
@@ -90,7 +90,7 @@ inline NMatrixMN NMatrixMN::SetupNMatrixIdentity()
 
 	NMatrix ret;
 	memset( ret.m, 0, sizeof(float)*M*N );
-	for( int i=0; i < N; i++ )
+	for( int i=0; i < N; ++i )
 		ret.m[i][i] = 1;
 	return ret;
 }
@@ -108,7 +108,7 @@ template<int M, int N>
 inline NMatrixMN NMatrixMN::operator+( NMatrixMN const &v ) const
 {
 	NMatrixMN ret;
-	for( int i=0; i < M; i++ )
+	for( int i=0; i < M; ++i )
 		for( int j=0; j < N; j++ )
 			ret.m[i][j] = m[i][j] + v.m[i][j];
 
@@ -119,7 +119,7 @@ inline NMatrixMN NMatrixMN::operator+( NMatrixMN const &v ) const
 template<int M, int N>
 inline NMatrixMN const &NMatrixMN::operator+=( NMatrixMN const &v )
 {
-	for( int i=0; i < M; i++ )
+	for( int i=0; i < M; ++i )
 		for( int j=0; j < N; j++ )
 			m[i][j] += v.m[i][j];
 
@@ -132,7 +132,7 @@ inline NMatrixMN NMatrixMN::operator-() const
 {
 	NMatrixMN ret;
 	
-	for( int i=0; i < M*N; i++ )
+	for( int i=0; i < M*N; ++i )
 		((float*)ret.m)[i] = -((float*)m)[i];
 	
 	return ret;
@@ -143,7 +143,7 @@ template<int M, int N>
 inline NMatrixMN NMatrixMN::operator-( NMatrixMN const &v ) const
 {
 	NMatrixMN ret;
-	for( int i=0; i < M; i++ )
+	for( int i=0; i < M; ++i )
 		for( int j=0; j < N; j++ )
 			ret.m[i][j] = m[i][j] - v.m[i][j];
 	return ret;
@@ -155,7 +155,7 @@ inline NVector<M> NMatrixMN::operator*( NVectorN const &v ) const
 {
 	NVectorN ret;
 
-	for( int i=0; i < M; i++ )
+	for( int i=0; i < M; ++i )
 	{
 		ret.v[i] = 0;
 
@@ -177,7 +177,7 @@ inline NMatrix<M,M> NMatrixMN::operator*( NMatrix<N,M> const &b ) const
 		for( int otherCol=0; otherCol < M; otherCol++ )
 		{
 			ret[myRow][otherCol] = 0;
-			for( int i=0; i < N; i++ )
+			for( int i=0; i < N; ++i )
 				ret[myRow][otherCol] += a.m[myRow][i] * b.m[i][otherCol];
 		}
 	}
@@ -191,7 +191,7 @@ inline NMatrixMN NMatrixMN::operator*( float val ) const
 {
 	NMatrixMN ret;
 
-	for( int i=0; i < N*M; i++ )
+	for( int i=0; i < N*M; ++i )
 		((float*)ret.m)[i] = ((float*)m)[i] * val;
 
 	return ret;
@@ -223,7 +223,7 @@ bool NMatrixMN::InverseGeneral( NMatrixMN &mInverse ) const
 	// I = identity
 
 	// Setup AI
-	for(i=0; i < N; i++)
+	for(i=0; i < N; ++i)
 	{
 		const float *pIn = m[i];
 		pOut = mat[i];
@@ -282,7 +282,7 @@ bool NMatrixMN::InverseGeneral( NMatrixMN &mInverse ) const
 		pRow[iRow] = 1.0f; // Preserve accuracy...
 		
 		// Eliminate this element from the other rows using operation 2.
-		for(i=0; i < N; i++)
+		for(i=0; i < N; ++i)
 		{
 			if(i == iRow)
 				continue;
@@ -301,7 +301,7 @@ bool NMatrixMN::InverseGeneral( NMatrixMN &mInverse ) const
 	}
 
 	// The inverse is on the right side of AX now (the identity is on the left).
-	for(i=0; i < N; i++)
+	for(i=0; i < N; ++i)
 	{
 		const float *pIn = mat[rowMap[i]] + N;
 		pOut = mInverse.m[i];
@@ -321,7 +321,7 @@ inline NMatrix<N,M> NMatrixMN::Transpose() const
 {
 	NMatrix<N,M> ret;
 	
-	for( int i=0; i < M; i++ )
+	for( int i=0; i < M; ++i )
 		for( int j=0; j < N; j++ )
 			ret.m[j][i] = m[i][j];
 	

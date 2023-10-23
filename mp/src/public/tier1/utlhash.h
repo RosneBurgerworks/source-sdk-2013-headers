@@ -878,7 +878,7 @@ template<class Data, int NUM_BUCKETS, class HashFuncs> inline void CUtlHashFixed
 //-----------------------------------------------------------------------------
 template<class Data, int NUM_BUCKETS, class HashFuncs> inline void CUtlHashFixed<Data,NUM_BUCKETS,HashFuncs>::RemoveAll( void )
 {
-	for ( int i = 0; i < NUM_BUCKETS; i++ )
+	for ( int i = 0; i < NUM_BUCKETS; ++i )
 	{
 		m_aBuckets[i].RemoveAll();
 	}

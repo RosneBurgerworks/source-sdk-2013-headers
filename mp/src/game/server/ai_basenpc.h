@@ -388,7 +388,7 @@ struct ScriptedNPCInteraction_t
 		iszMyWeapon = NULL_STRING;
 		iszTheirWeapon = NULL_STRING;
 
-		for ( int i = 0; i < SNPCINT_NUM_PHASES; i++)
+		for ( int i = 0; i < SNPCINT_NUM_PHASES; ++i)
 		{
 			sPhases[i].iszSequence = NULL_STRING;
 			sPhases[i].iActivity = ACT_INVALID;
@@ -797,7 +797,7 @@ public:
 		CAI_BehaviorBase **ppBehaviors = AccessBehaviors();
 		
 		*ppBehavior = NULL;
-		for ( int i = 0; i < NumBehaviors(); i++ )
+		for ( int i = 0; i < NumBehaviors(); ++i )
 		{
 			*ppBehavior = dynamic_cast<BEHAVIOR_TYPE *>(ppBehaviors[i]);
 			if ( *ppBehavior )
@@ -2391,17 +2391,17 @@ typedef CHandle<CAI_BaseNPC> AIHANDLE;
 		taskIds.Sort(); \
 		conditionIds.Sort(); \
 		\
-		for ( i = 0; i < scheduleIds.Count(); i++ ) \
+		for ( i = 0; i < scheduleIds.Count(); ++i ) \
 		{ \
 			ADD_CUSTOM_SCHEDULE_NAMED( CNpc, scheduleIds[i].pszName, scheduleIds[i].localId );  \
 		} \
 		\
-		for ( i = 0; i < taskIds.Count(); i++ ) \
+		for ( i = 0; i < taskIds.Count(); ++i ) \
 		{ \
 			ADD_CUSTOM_TASK_NAMED( CNpc, taskIds[i].pszName, taskIds[i].localId );  \
 		} \
 		\
-		for ( i = 0; i < conditionIds.Count(); i++ ) \
+		for ( i = 0; i < conditionIds.Count(); ++i ) \
 		{ \
 			if ( ValidateConditionLimits( conditionIds[i].pszName ) ) \
 			{ \
@@ -2409,12 +2409,12 @@ typedef CHandle<CAI_BaseNPC> AIHANDLE;
 			} \
 		} \
 		\
-		for ( i = 0; i < reqiredOthers.Count(); i++ ) \
+		for ( i = 0; i < reqiredOthers.Count(); ++i ) \
 		{ \
 			(*reqiredOthers[i])();  \
 		} \
 		\
-		for ( i = 0; i < schedulesToLoad.Count(); i++ ) \
+		for ( i = 0; i < schedulesToLoad.Count(); ++i ) \
 		{ \
 			if ( CNpc::gm_SchedLoadStatus.fValid ) \
 			{ \
@@ -2453,17 +2453,17 @@ inline bool ValidateConditionLimits( const char *pszNewCondition )
 		conditionIds.Sort(); \
 		squadSlotIds.Sort(); \
 		\
-		for ( i = 0; i < scheduleIds.Count(); i++ ) \
+		for ( i = 0; i < scheduleIds.Count(); ++i ) \
 		{ \
 			ADD_CUSTOM_SCHEDULE_NAMED( CNpc, scheduleIds[i].pszName, scheduleIds[i].localId );  \
 		} \
 		\
-		for ( i = 0; i < taskIds.Count(); i++ ) \
+		for ( i = 0; i < taskIds.Count(); ++i ) \
 		{ \
 			ADD_CUSTOM_TASK_NAMED( CNpc, taskIds[i].pszName, taskIds[i].localId );  \
 		} \
 		\
-		for ( i = 0; i < conditionIds.Count(); i++ ) \
+		for ( i = 0; i < conditionIds.Count(); ++i ) \
 		{ \
 			if ( ValidateConditionLimits( conditionIds[i].pszName ) ) \
 			{ \
@@ -2471,17 +2471,17 @@ inline bool ValidateConditionLimits( const char *pszNewCondition )
 			} \
 		} \
 		\
-		for ( i = 0; i < squadSlotIds.Count(); i++ ) \
+		for ( i = 0; i < squadSlotIds.Count(); ++i ) \
 		{ \
 			ADD_CUSTOM_SQUADSLOT_NAMED( CNpc, squadSlotIds[i].pszName, squadSlotIds[i].localId );  \
 		} \
 		\
-		for ( i = 0; i < reqiredOthers.Count(); i++ ) \
+		for ( i = 0; i < reqiredOthers.Count(); ++i ) \
 		{ \
 			(*reqiredOthers[i])();  \
 		} \
 		\
-		for ( i = 0; i < schedulesToLoad.Count(); i++ ) \
+		for ( i = 0; i < schedulesToLoad.Count(); ++i ) \
 		{ \
 			if ( CNpc::gm_SchedLoadStatus.fValid ) \
 			{ \

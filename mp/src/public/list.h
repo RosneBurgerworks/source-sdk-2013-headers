@@ -223,7 +223,7 @@ Position GList<T>::GetPositionAtIndex( int index )
 {
 	int i;
 	GListNode<T> *node = head->next;
-	for( i = 0; i < index; i++ )
+	for( i = 0; i < index; ++i )
     {
 		node = node->next;
     }

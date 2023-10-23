@@ -422,7 +422,7 @@ template <size_t maxLenInChars> int Q_NormalizeUTF8ToASCII( OUT_Z_ARRAY char (&p
 	int nResult = Q_NormalizeUTF8( pchSrc, pchDest, maxLenInChars );
 
 	// replace non ASCII characters with ?
-	for ( int i = 0; i < nResult; i++ )
+	for ( int i = 0; i < nResult; ++i )
 	{
 		if ( pchDest[i] > 127 || pchDest[i] < 0 )
 		{

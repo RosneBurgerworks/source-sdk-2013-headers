@@ -91,7 +91,7 @@ entities. Each one is useful under different conditions.
 		
 		CEffectMaterialHandle hMaterial = pEmitter->GetCEffectMaterial( "mymaterial" );
 		
-		for( int i=0; i < 100; i++ )
+		for( int i=0; i < 100; ++i )
 			pEmitter->AddParticle( hMaterial, RandomVector(0,10), 4 );
 
 		pEmitter->Release();

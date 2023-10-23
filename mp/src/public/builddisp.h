@@ -300,7 +300,7 @@ inline void CCoreDispSurface::SetLuxelCoords( int bumpIndex, Vector2D const luxe
 {
 	Assert( bumpIndex >= 0 );
 	Assert( bumpIndex < NUM_BUMP_VECTS + 1 );
-	for( int i=0; i < 4; i++ )
+	for( int i=0; i < 4; ++i )
 		Vector2DCopy( luxelCoords[i], m_LuxelCoords[bumpIndex][i] );
 }
 
@@ -311,7 +311,7 @@ inline void CCoreDispSurface::GetLuxelCoords( int bumpIndex, Vector2D luxelCoord
 {
 	Assert( bumpIndex >= 0 );
 	Assert( bumpIndex < NUM_BUMP_VECTS + 1 );
-	for( int i=0; i < 4; i++ )
+	for( int i=0; i < 4; ++i )
 		Vector2DCopy( m_LuxelCoords[bumpIndex][i], luxelCoords[i] );
 }
 
@@ -1251,7 +1251,7 @@ inline void CCoreDispInfo::ResetFieldVectors( void )
 //	m_Surf.GetNormal( normal );
 
 	int size = GetSize();
-	for( int i = 0; i < size; i++ )
+	for( int i = 0; i < size; ++i )
 	{
 		m_pVerts[i].m_FieldVector.Init();
 //		m_FieldVectors[i] = normal;
@@ -1284,7 +1284,7 @@ inline void CCoreDispInfo::GetFieldVector( int index, Vector& v )
 inline void CCoreDispInfo::ResetSubdivPositions( void )
 {
 	int size = GetSize();
-	for( int i = 0; i < size; i++ )
+	for( int i = 0; i < size; ++i )
 	{
 		m_pVerts[i].m_SubdivPos.Init();
 	}
@@ -1319,7 +1319,7 @@ inline void CCoreDispInfo::ResetSubdivNormals( void )
 	m_Surf.GetNormal( normal );
 
 	int size = GetSize();
-	for( int i = 0; i < size; i++ )
+	for( int i = 0; i < size; ++i )
 	{
 		m_pVerts[i].m_SubdivNormal = normal;
 	}
@@ -1351,7 +1351,7 @@ inline void CCoreDispInfo::GetSubdivNormal( int ndx, Vector &v )
 inline void CCoreDispInfo::ResetFieldDistances( void )
 {
 	int size = GetSize();
-	for( int i = 0; i < size; i++ )
+	for( int i = 0; i < size; ++i )
 	{
 		m_pVerts[i].m_FieldDistance = 0.0f;
 	}

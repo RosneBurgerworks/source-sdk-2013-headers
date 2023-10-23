@@ -75,7 +75,7 @@ public:
 		{
 			// @Note (toml 11-21-02): Save load does not support arrays of user defined types (embedded)
 			dataDesc.fieldSizeInBytes = CDatamapFieldSizeDeducer<FIELD_TYPE>::FieldSize();
-			for ( int i = 0; i < nElems; i++ )
+			for ( int i = 0; i < nElems; ++i )
 				pSave->WriteAll( &((*pUtlVector)[i]), &dataMap );
 		}
 	}
@@ -129,7 +129,7 @@ public:
 		{
 			// @Note (toml 11-21-02): Save load does not support arrays of user defined types (embedded)
 			dataDesc.fieldSizeInBytes = CDatamapFieldSizeDeducer<FIELD_TYPE>::FieldSize();
-			for ( int i = 0; i < nElems; i++ )
+			for ( int i = 0; i < nElems; ++i )
 				pRestore->ReadAll( &((*pUtlVector)[i]), &dataMap );
 		}		
 	}

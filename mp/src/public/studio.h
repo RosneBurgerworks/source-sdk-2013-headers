@@ -1582,7 +1582,7 @@ struct studiohwdata_t
 		// never consider shadow lod as viable candidate
 		int numLODs = (m_pLODs[m_NumLODs-1].m_SwitchPoint < 0.0f) ? m_NumLODs-1 : m_NumLODs;
 
-		for ( int i = m_RootLOD; i < numLODs-1; i++ )
+		for ( int i = m_RootLOD; i < numLODs-1; ++i )
 		{
 			if ( m_pLODs[i+1].m_SwitchPoint > lodMetric )
 				return i;
@@ -1774,11 +1774,11 @@ struct thinModelVertices_t
 		int    numStoredWeights = max( 0, ( m_numBoneInfluences - 1 ) );
 		float *pBaseWeight	= m_boneWeights + vertIndex*numStoredWeights;
 		char  *pBaseIndex	= m_boneIndices + vertIndex*m_numBoneInfluences;
-		for ( int i = 0; i < m_numBoneInfluences; i++ )
+		for ( int i = 0; i < m_numBoneInfluences; ++i )
 		{
 			pBaseIndex[i] = boneWeights.bone[i];
 		}
-		for ( int i = 0; i < numStoredWeights; i++ )
+		for ( int i = 0; i < numStoredWeights; ++i )
 		{
 			pBaseWeight[i] = boneWeights.weight[i];
 		}
@@ -1845,7 +1845,7 @@ private:
 		float *pBaseWeight	= m_boneWeights + vertIndex*numStoredWeights;
 		char  *pBaseIndex	= m_boneIndices + vertIndex*m_numBoneInfluences;
 		float  sum			= 0.0f;
-		for (int i = 0;i < MAX_NUM_BONES_PER_VERT;i++)
+		for (int i = 0;i < MAX_NUM_BONES_PER_VERT;++i)
 		{
 			if ( i < ( m_numBoneInfluences - 1 ) )
 				pBoneWeights->weight[i] = pBaseWeight[i];
@@ -3017,7 +3017,7 @@ inline bool Studio_ConvertStudioHdrToNewVersion( studiohdr_t *pStudioHdr )
 	if (version < 46)
 	{
 		// some of the anim index data is incompatible
-		for (int i = 0; i < pStudioHdr->numlocalanim; i++)
+		for (int i = 0; i < pStudioHdr->numlocalanim; ++i)
 		{
 			mstudioanimdesc_t *pAnim = (mstudioanimdesc_t *)pStudioHdr->pLocalAnimdesc( i );
 
@@ -3042,7 +3042,7 @@ inline bool Studio_ConvertStudioHdrToNewVersion( studiohdr_t *pStudioHdr )
 			pStudioHdr->unused4 = 0;
 			bResult = false;
 		}
-		for (int i = 0; i < pStudioHdr->numlocalanim; i++)
+		for (int i = 0; i < pStudioHdr->numlocalanim; ++i)
 		{
 			mstudioanimdesc_t *pAnim = (mstudioanimdesc_t *)pStudioHdr->pLocalAnimdesc( i );
 			pAnim->zeroframeindex = 0;
@@ -3051,7 +3051,7 @@ inline bool Studio_ConvertStudioHdrToNewVersion( studiohdr_t *pStudioHdr )
 	} 
 	else if (version == 47)
 	{
-		for (int i = 0; i < pStudioHdr->numlocalanim; i++)
+		for (int i = 0; i < pStudioHdr->numlocalanim; ++i)
 		{
 			mstudioanimdesc_t *pAnim = (mstudioanimdesc_t *)pStudioHdr->pLocalAnimdesc( i );
 			if (pAnim->zeroframeindex != 0)
@@ -3152,7 +3152,7 @@ inline int Studio_LoadVertexes( const vertexFileHeader_t *pTempVvdHdr, vertexFil
 	// copy all data up to start of vertexes
 	memcpy((void*)pNewVvdHdr, (void*)pTempVvdHdr, pTempVvdHdr->vertexDataStart);
 
-	for ( i = 0; i < rootLOD; i++)
+	for ( i = 0; i < rootLOD; ++i)
 	{
 		pNewVvdHdr->numLODVertexes[i] = pNewVvdHdr->numLODVertexes[rootLOD];
 	}
@@ -3194,7 +3194,7 @@ inline int Studio_LoadVertexes( const vertexFileHeader_t *pTempVvdHdr, vertexFil
 	// re-establish mesh ordered vertexes into cache memory, according to table
 	target      = 0;
 	pFixupTable = (vertexFileFixup_t *)((byte *)pTempVvdHdr + pTempVvdHdr->fixupTableStart);
-	for (i=0; i<pTempVvdHdr->numFixups; i++)
+	for (i=0; i<pTempVvdHdr->numFixups; ++i)
 	{
 		if (pFixupTable[i].lod < rootLOD)
 		{

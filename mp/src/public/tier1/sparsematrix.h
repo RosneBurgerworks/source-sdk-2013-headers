@@ -85,7 +85,7 @@ namespace MatrixMath
 	{
 		Assert( matA.Width() == matB.Height() );
 		pMatrixOut->SetDimensions( matA.Height(), matB.Width() );
-		for( int i = 0; i < matA.Height(); i++ )
+		for( int i = 0; i < matA.Height(); ++i )
 		{
 			for( int j = 0; j < matB.Width(); j++ )
 			{

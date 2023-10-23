@@ -893,7 +893,7 @@ template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::CleanupOnDeath( CBaseEntity *pCulprit, bool bFireDeathOutput )
 {
 	DeferSchedulingToBehavior( NULL );
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeCleanupOnDeath( pCulprit, bFireDeathOutput );
 	}
@@ -907,7 +907,7 @@ inline void CAI_BehaviorHost<BASE_NPC>::GatherConditions()
 { 
 	// Iterate over behaviors and call GatherConditionsNotActive() on each behavior
 	// not currently active.
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		if( m_Behaviors[i] != m_pCurBehavior )
 		{
@@ -965,7 +965,7 @@ inline int CAI_BehaviorHost<BASE_NPC>::BackBridge_SelectSchedule()
 template <class BASE_NPC>
 inline bool CAI_BehaviorHost<BASE_NPC>::BehaviorSelectSchedule()
 {
-	for ( int i = 0; i < m_Behaviors.Count(); i++ )
+	for ( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		if ( m_Behaviors[i]->CanSelectSchedule() && ShouldBehaviorSelectSchedule( m_Behaviors[i] ) )
 		{
@@ -1190,7 +1190,7 @@ inline void CAI_BehaviorHost<BASE_NPC>::BuildScheduleTestBits()
 template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::OnChangeHintGroup( string_t oldGroup, string_t newGroup )
 {
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeOnChangeHintGroup( oldGroup, newGroup );
 	}
@@ -1500,7 +1500,7 @@ inline bool CAI_BehaviorHost<BASE_NPC>::ShouldAlwaysThink()
 template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::OnChangeActiveWeapon( CBaseCombatWeapon *pOldWeapon, CBaseCombatWeapon *pNewWeapon )
 {
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeOnChangeActiveWeapon( pOldWeapon, pNewWeapon );
 	}
@@ -1512,7 +1512,7 @@ inline void CAI_BehaviorHost<BASE_NPC>::OnChangeActiveWeapon( CBaseCombatWeapon 
 template <class BASE_NPC>
 inline bool CAI_BehaviorHost<BASE_NPC>::SpeakMapmakerInterruptConcept( string_t iszConcept )
 {
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		if ( m_Behaviors[i]->BridgeSpeakMapmakerInterruptConcept( iszConcept ) )
 			return true;
@@ -1526,7 +1526,7 @@ inline bool CAI_BehaviorHost<BASE_NPC>::SpeakMapmakerInterruptConcept( string_t 
 template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::OnRestore()
 {
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeOnRestore();
 	}
@@ -1715,7 +1715,7 @@ template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::Precache()
 {
 	BaseClass::Precache();
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgePrecache();
 	}
@@ -1771,7 +1771,7 @@ template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::NPCInit()
 {
 	BaseClass::NPCInit();
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeSpawn();
 	}
@@ -1782,7 +1782,7 @@ inline void CAI_BehaviorHost<BASE_NPC>::NPCInit()
 template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::UpdateOnRemove()
 {
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeUpdateOnRemove();
 	}
@@ -1794,7 +1794,7 @@ inline void CAI_BehaviorHost<BASE_NPC>::UpdateOnRemove()
 template <class BASE_NPC>
 inline void CAI_BehaviorHost<BASE_NPC>::Event_Killed( const CTakeDamageInfo &info )
 {
-	for( int i = 0; i < m_Behaviors.Count(); i++ )
+	for( int i = 0; i < m_Behaviors.Count(); ++i )
 	{
 		m_Behaviors[i]->BridgeEvent_Killed( info );
 	}
@@ -1893,7 +1893,7 @@ inline void CAI_BehaviorHost<BASE_NPC>::AddBehavior( CAI_BehaviorBase *pBehavior
 #ifdef DEBUG
 	Assert( m_Behaviors.Find( pBehavior ) == m_Behaviors.InvalidIndex() );
 	Assert( m_fDebugInCreateBehaviors );
-	for ( int i = 0; i < m_Behaviors.Count(); i++)
+	for ( int i = 0; i < m_Behaviors.Count(); ++i)
 	{
 		Assert( typeid(*m_Behaviors[i]) != typeid(*pBehavior) );
 	}

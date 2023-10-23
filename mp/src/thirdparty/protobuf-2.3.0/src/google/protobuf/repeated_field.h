@@ -620,7 +620,7 @@ inline RepeatedPtrFieldBase::RepeatedPtrFieldBase()
 
 template <typename TypeHandler>
 void RepeatedPtrFieldBase::Destroy() {
-  for (int i = 0; i < allocated_size_; i++) {
+  for (int i = 0; i < allocated_size_; ++i) {
     TypeHandler::Delete(cast<TypeHandler>(elements_[i]));
   }
   if (elements_ != initial_space_) {
@@ -667,7 +667,7 @@ inline void RepeatedPtrFieldBase::RemoveLast() {
 
 template <typename TypeHandler>
 void RepeatedPtrFieldBase::Clear() {
-  for (int i = 0; i < current_size_; i++) {
+  for (int i = 0; i < current_size_; ++i) {
     TypeHandler::Clear(cast<TypeHandler>(elements_[i]));
   }
   current_size_ = 0;
@@ -676,7 +676,7 @@ void RepeatedPtrFieldBase::Clear() {
 template <typename TypeHandler>
 inline void RepeatedPtrFieldBase::MergeFrom(const RepeatedPtrFieldBase& other) {
   Reserve(current_size_ + other.current_size_);
-  for (int i = 0; i < other.current_size_; i++) {
+  for (int i = 0; i < other.current_size_; ++i) {
     TypeHandler::Merge(other.Get<TypeHandler>(i), Add<TypeHandler>());
   }
 }

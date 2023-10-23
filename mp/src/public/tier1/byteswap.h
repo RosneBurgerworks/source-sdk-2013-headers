@@ -154,7 +154,7 @@ public:
 		}
 
 		// Swap everything in the buffer:
-		for( int i = 0; i < count; i++ )
+		for( int i = 0; i < count; ++i )
 		{
 			LowLevelByteSwap<T>( &outputBuffer[i], &inputBuffer[i] );
 		}
@@ -196,7 +196,7 @@ public:
 		}
 
 		// Swap everything in the buffer:
-		for( int i = 0; i < count; i++ )
+		for( int i = 0; i < count; ++i )
 		{
 			LowLevelByteSwap<T>( &outputBuffer[i], &inputBuffer[i] );
 		}
@@ -234,7 +234,7 @@ private:
 			Assert( "Invalid size in CByteswap::LowLevelByteSwap" && 0 );
 		}
 #else
-		for( int i = 0; i < sizeof(T); i++ )
+		for( int i = 0; i < sizeof(T); ++i )
 		{
 			((unsigned char* )&temp)[i] = ((unsigned char*)input)[sizeof(T)-(i+1)]; 
 		}

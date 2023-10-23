@@ -260,7 +260,7 @@ class Vector {
   // Clears the Vector.
   void Clear() {
     if (elements_ != NULL) {
-      for (int i = 0; i < size_; i++) {
+      for (int i = 0; i < size_; ++i) {
         delete elements_[i];
       }
 
@@ -325,7 +325,7 @@ class Vector {
   template <typename P>  // P is the type of the predicate function/functor
   int CountIf(P predicate) const {
     int count = 0;
-    for (int i = 0; i < size_; i++) {
+    for (int i = 0; i < size_; ++i) {
       if (predicate(*(elements_[i]))) {
         count++;
       }
@@ -340,7 +340,7 @@ class Vector {
   // the elements.
   template <typename F>  // F is the type of the function/functor
   void ForEach(F functor) const {
-    for (int i = 0; i < size_; i++) {
+    for (int i = 0; i < size_; ++i) {
       functor(*(elements_[i]));
     }
   }
@@ -351,7 +351,7 @@ class Vector {
   // element type.  This method does not change the elements.
   template <typename P>  // P is the type of the predicate function/functor.
   const E* FindIf(P predicate) const {
-    for (int i = 0; i < size_; i++) {
+    for (int i = 0; i < size_; ++i) {
       if (predicate(*elements_[i])) {
         return elements_[i];
       }
@@ -361,7 +361,7 @@ class Vector {
 
   template <typename P>
   E* FindIf(P predicate) {
-    for (int i = 0; i < size_; i++) {
+    for (int i = 0; i < size_; ++i) {
       if (predicate(*elements_[i])) {
         return elements_[i];
       }
@@ -440,7 +440,7 @@ class Vector {
   Vector* Clone() const {
     Vector* const clone = new Vector;
     clone->Reserve(size_);
-    for (int i = 0; i < size_; i++) {
+    for (int i = 0; i < size_; ++i) {
       clone->PushBack(GetElement(i));
     }
     return clone;

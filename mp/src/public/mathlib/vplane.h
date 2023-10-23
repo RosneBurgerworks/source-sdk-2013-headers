@@ -163,7 +163,7 @@ inline SideType VPlane::BoxOnPlaneSide(const Vector &vMin, const Vector &vMax) c
 	};
 
 	firstSide = GetPointSideExact(vPoints[0]);
-	for(i=1; i < 8; i++)
+	for(i=1; i < 8; ++i)
 	{
 		side = GetPointSideExact(vPoints[i]);
 

@@ -361,7 +361,7 @@ struct RenderTargetState_t
 
 	inline bool RefersTo( CGLMTex * pSurf ) const
 	{
-		for ( uint i = 0; i < 4; i++ )
+		for ( uint i = 0; i < 4; ++i )
 			if ( m_pRenderTargets[i] == pSurf )
 				return true;
 
@@ -1143,7 +1143,7 @@ FORCEINLINE HRESULT TOGLMETHODCALLTYPE IDirect3DDevice9::SetRenderStateInline( D
 			// d3d packs all the enables into one word.
 			// we break that out so we don't do N glEnable calls to sync - 
 			// GLM is tracking one unique enable per plane.
-			for( int i=0; i<kGLMUserClipPlanes; i++)
+			for( int i=0; i<kGLMUserClipPlanes; ++i)
 			{
 				gl.m_ClipPlaneEnable[i].enable = (Value & (1<<i)) != 0;
 			}

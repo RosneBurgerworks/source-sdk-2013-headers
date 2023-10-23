@@ -58,7 +58,7 @@ class OnTheFlyPrimeTable : public PrimeTable {
   virtual bool IsPrime(int n) const {
     if (n <= 1) return false;
 
-    for (int i = 2; i*i <= n; i++) {
+    for (int i = 2; i*i <= n; ++i) {
       // n is divisible by an integer other than 1 and itself.
       if ((n % i) == 0) return false;
     }
@@ -103,7 +103,7 @@ class PreCalculatedPrimeTable : public PrimeTable {
     ::std::fill(is_prime_, is_prime_ + is_prime_size_, true);
     is_prime_[0] = is_prime_[1] = false;
 
-    for (int i = 2; i <= max; i++) {
+    for (int i = 2; i <= max; ++i) {
       if (!is_prime_[i]) continue;
 
       // Marks all multiples of i (except i itself) as non-prime.

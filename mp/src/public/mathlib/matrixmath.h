@@ -31,7 +31,7 @@ namespace MatrixMath
 	template<class MATRIXCLASS>
 	void ScaleMatrix( MATRIXCLASS &matrix, float flScaleValue )
 	{
-		for( int i = 0; i < matrix.Height(); i++ )
+		for( int i = 0; i < matrix.Height(); ++i )
 		{
 			for( int j = 0; j < matrix.Width(); j++ )
 			{
@@ -57,7 +57,7 @@ namespace MatrixMath
 	template<class MATRIXCLASS>
 	void AddToMatrix( MATRIXCLASS &matrix, float flAddend )
 	{
-		for( int i = 0; i < matrix.Height(); i++ )
+		for( int i = 0; i < matrix.Height(); ++i )
 		{
 			for( int j = 0; j < matrix.Width(); j++ )
 			{
@@ -71,7 +71,7 @@ namespace MatrixMath
 	void TransposeMatrix( MATRIXCLASSIN const &matrixIn, MATRIXCLASSOUT *pMatrixOut )
 	{
 		pMatrixOut->SetDimensions( matrixIn.Width(), matrixIn.Height() );
-		for( int i = 0; i < pMatrixOut->Height(); i++ )
+		for( int i = 0; i < pMatrixOut->Height(); ++i )
 		{
 			for( int j = 0; j < pMatrixOut->Width(); j++ )
 			{
@@ -86,7 +86,7 @@ namespace MatrixMath
 	void CopyMatrix( MATRIXCLASSIN const &matrixIn, MATRIXCLASSOUT *pMatrixOut )
 	{
 		pMatrixOut->SetDimensions( matrixIn.Height(), matrixIn.Width() );
-		for( int i = 0; i < matrixIn.Height(); i++ )
+		for( int i = 0; i < matrixIn.Height(); ++i )
 		{
 			for( int j = 0; j < matrixIn.Width(); j++ )
 			{
@@ -102,7 +102,7 @@ namespace MatrixMath
 	template<class MATRIXCLASSIN, class MATRIXCLASSOUT>
 	void AddMatrixToMatrix( MATRIXCLASSIN const &matrixIn, MATRIXCLASSOUT *pMatrixOut )
 	{
-		for( int i = 0; i < matrixIn.Height(); i++ )
+		for( int i = 0; i < matrixIn.Height(); ++i )
 		{
 			for( int j = 0; j < matrixIn.Width(); j++ )
 			{
@@ -115,7 +115,7 @@ namespace MatrixMath
 	template<class MATRIXCLASSIN, class MATRIXCLASSOUT>
 	void AddScaledMatrixToMatrix( float flScale, MATRIXCLASSIN const &matrixIn, MATRIXCLASSOUT *pMatrixOut )
 	{
-		for( int i = 0; i < matrixIn.Height(); i++ )
+		for( int i = 0; i < matrixIn.Height(); ++i )
 		{
 			for( int j = 0; j < matrixIn.Width(); j++ )
 			{
@@ -129,7 +129,7 @@ namespace MatrixMath
 	template<class MATRIXCLASSOUT> 
 	void SetMatrixToIdentity( MATRIXCLASSOUT *pMatrixOut, float flDiagonalValue = 1.0 )
 	{
-		for( int i = 0; i < pMatrixOut->Height(); i++ )
+		for( int i = 0; i < pMatrixOut->Height(); ++i )
 		{
 			for( int j = 0; j < pMatrixOut->Width(); j++ )
 			{
@@ -254,7 +254,7 @@ namespace MatrixMath
 		Assert( vecB.Width() == 1 );
 		Assert( vecA.Height() == vecB.Height() );
 		double flResult = 0;
-		for( int i = 0; i < vecA.Height(); i++ )
+		for( int i = 0; i < vecA.Height(); ++i )
 		{
 			flResult += vecA.Element( i, 0 ) * vecB.Element( i, 0 );
 		}
@@ -269,7 +269,7 @@ namespace MatrixMath
 	{
 		Assert( matA.Width() == matB.Height() );
 		pMatrixOut->SetDimensions( matA.Height(), matB.Width() );
-		for( int i = 0; i < matA.Height(); i++ )
+		for( int i = 0; i < matA.Height(); ++i )
 		{
 			for( int j = 0; j < matB.Width(); j++ )
 			{

@@ -427,7 +427,7 @@ public:
 	
 	~CDatadescGeneratedNameHolder()
 	{
-		for ( int i = 0; i < m_Names.Count(); i++ )
+		for ( int i = 0; i < m_Names.Count(); ++i )
 		{
 			delete m_Names[i];
 		}

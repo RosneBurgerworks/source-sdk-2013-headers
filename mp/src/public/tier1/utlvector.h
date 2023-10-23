@@ -424,7 +424,7 @@ public:
 	{
 		if ( m_pData != StaticData() )
 		{
-			for( int i=0; i < m_pData->m_Size; i++ )
+			for( int i=0; i < m_pData->m_Size; ++i )
 			{
 				delete Element(i);
 			}
@@ -579,7 +579,7 @@ inline CUtlVector<T, A>& CUtlVector<T, A>::operator=( const CUtlVector<T, A> &ot
 {
 	int nCount = other.Count();
 	SetSize( nCount );
-	for ( int i = 0; i < nCount; i++ )
+	for ( int i = 0; i < nCount; ++i )
 	{
 		(*this)[ i ] = other[ i ];
 	}
@@ -702,7 +702,7 @@ inline const T& CUtlVector<T, A>::Random() const
 template< typename T, class A >
 void CUtlVector<T, A>::Shuffle( IUniformRandomStream* pSteam )
 {
-	for ( int i = 0; i < m_Size; i++ )
+	for ( int i = 0; i < m_Size; ++i )
 	{
 		int j = pSteam ? pSteam->RandomInt( i, m_Size - 1 ) : RandomInt( i, m_Size - 1 );
 		if ( i != j )
@@ -972,7 +972,7 @@ void CUtlVector<T, A>::CopyArray( const T *pArray, int size )
 	Assert( (Base() == NULL) || !pArray || (Base() >= (pArray + size)) || (pArray >= (Base() + Count()) ) ); 
 
 	SetSize( size );
-	for( int i=0; i < size; i++ )
+	for( int i=0; i < size; ++i )
 	{
 		(*this)[i] = pArray[i];
 	}
@@ -1000,7 +1000,7 @@ int CUtlVector<T, A>::AddVectorToTail( CUtlVector const &src )
 	AddMultipleToTail( src.Count() );
 
 	// Copy the elements.	
-	for ( int i=0; i < src.Count(); i++ )
+	for ( int i=0; i < src.Count(); ++i )
 	{
 		(*this)[base + i] = src[i];
 	}
@@ -1027,7 +1027,7 @@ inline int CUtlVector<T, A>::InsertMultipleBefore( int elem, int num, const T *p
 	// Copy stuff in?
 	if ( pToInsert )
 	{
-		for ( int i=0; i < num; i++ )
+		for ( int i=0; i < num; ++i )
 		{
 			Element( elem+i ) = pToInsert[i];
 		}
@@ -1137,7 +1137,7 @@ void CUtlVector<T, A>::RemoveMultipleFromTail( int num )
 {
 	Assert( num <= Count() );
 
-	for (int i = m_Size-num; i < m_Size; i++)
+	for (int i = m_Size-num; i < m_Size; ++i)
 		Destruct(&Element(i));
 
 	m_Size -= num;
@@ -1171,7 +1171,7 @@ inline void CUtlVector<T, A>::Purge()
 template< typename T, class A >
 inline void CUtlVector<T, A>::PurgeAndDeleteElements()
 {
-	for( int i=0; i < m_Size; i++ )
+	for( int i=0; i < m_Size; ++i )
 	{
 		delete Element(i);
 	}
@@ -1237,7 +1237,7 @@ public:
 
 	inline void PurgeAndDeleteElements()
 	{
-		for( int i=0; i < m_Size; i++ )
+		for( int i=0; i < m_Size; ++i )
 		{
 			delete [] Element(i);
 		}

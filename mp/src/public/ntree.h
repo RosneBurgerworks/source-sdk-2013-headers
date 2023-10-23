@@ -180,7 +180,7 @@ int NTreeNode<T>::GetIndexRelativeToParent()
 	}
 	GListIterator<NTreeNode<T> *> iterator( parent->list );
 	int i;
-	for( i = 0, iterator.GotoHead(); !iterator.AtEnd(); iterator++, i++ )
+	for( i = 0, iterator.GotoHead(); !iterator.AtEnd(); iterator++, ++i )
 	{
 		if( iterator.GetCurrent() == this )
 		{

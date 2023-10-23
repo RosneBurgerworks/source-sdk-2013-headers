@@ -980,7 +980,7 @@ template<typename T, int COUNT> class GLStateArray
 		// write all slots in the array
 		FORCEINLINE void Flush()
 		{
-			for( int i=0; i < COUNT; i++)
+			for( int i=0; i < COUNT; ++i)
 			{
 				FlushIndex( i );
 			}
@@ -995,7 +995,7 @@ template<typename T, int COUNT> class GLStateArray
 		
 		inline void Default( void )
 		{
-			for( int i=0; i<COUNT; i++)
+			for( int i=0; i<COUNT; ++i)
 			{
 				DefaultIndex( i );
 			}			
@@ -1027,7 +1027,7 @@ template<typename T, int COUNT> class GLStateArray
 			//T		temp;
 			bool	result = false;
 
-			for( int i=0; i<COUNT; i++)
+			for( int i=0; i<COUNT; ++i)
 			{
 				result |= CheckIndex( i );
 			}
@@ -2047,7 +2047,7 @@ FORCEINLINE void GLMContext::SetProgramParametersF( EGLMProgramType type, uint b
 
 #if GLMDEBUG
 	GLMPRINTF(("-S-GLMContext::SetProgramParametersF %s slots %d - %d: ", (type==kGLMVertexProgram) ? "VS" : "FS", baseSlot, baseSlot + slotCount - 1 ));
-	for( uint i=0; i<slotCount; i++ )
+	for( uint i=0; i<slotCount; ++i )
 	{
 		GLMPRINTF((		"-S-    %03d: [ %7.4f %7.4f %7.4f %7.4f ]",
 			baseSlot+i,
@@ -2130,7 +2130,7 @@ FORCEINLINE void GLMContext::SetProgramParametersB( EGLMProgramType type, uint b
 
 #if GLMDEBUG
 	GLMPRINTF(("-S-GLMContext::SetProgramParametersB %s bools %d - %d: ", (type==kGLMVertexProgram) ? "VS" : "FS", baseSlot, baseSlot + boolCount - 1 ));
-	for( uint i=0; i<boolCount; i++ )
+	for( uint i=0; i<boolCount; ++i )
 	{
 		GLMPRINTF((		"-S-    %03d: %d (bool)",
 			baseSlot+i,
@@ -2159,7 +2159,7 @@ FORCEINLINE void GLMContext::SetProgramParametersI( EGLMProgramType type, uint b
 
 #if GLMDEBUG
 	GLMPRINTF(("-S-GLMContext::SetProgramParametersI %s slots %d - %d: ", (type==kGLMVertexProgram) ? "VS" : "FS", baseSlot, baseSlot + slotCount - 1 ));
-	for( uint i=0; i<slotCount; i++ )
+	for( uint i=0; i<slotCount; ++i )
 	{
 		GLMPRINTF((		"-S-    %03d: %d %d %d %d (int4)",
 			baseSlot+i,

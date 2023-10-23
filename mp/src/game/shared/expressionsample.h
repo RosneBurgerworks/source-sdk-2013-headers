@@ -113,7 +113,7 @@ public:
 		// Copy ramp over
 		m_Ramp.RemoveAll();
 		int i;
-		for ( i = 0; i < src.m_Ramp.Count(); i++ )
+		for ( i = 0; i < src.m_Ramp.Count(); ++i )
 		{
 			CExpressionSample sample = src.m_Ramp[ i ];
 			CExpressionSample *newSample = Add( sample.time, sample.value, sample.selected );
