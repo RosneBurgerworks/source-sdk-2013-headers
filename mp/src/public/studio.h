@@ -1,9 +1,18 @@
 #pragma once
 #include "basetypes.h"
+#include "mathlib/vector2d.h"
+#include "mathlib/vector.h"
+#include "mathlib/vector4d.h"
+#include "mathlib/compressed_vector.h"
+#include "tier0/dbg.h"
+#include "tier0/threadtools.h"
+#include "mathlib/mathlib.h"
 #include "utlvector.h"
+#include "utlhash.h"
 #include "datamap.h"
+#include "generichash.h"
 #include "localflexcontroller.h"
-#include "../../Utils/Math/Math.h"
+#include "utlsymbol.h"
 
 #define STUDIO_ENABLE_PERF_COUNTERS
 #define STUDIO_SEQUENCE_ACTIVITY_LOOKUPS_ARE_SLOW 0 
